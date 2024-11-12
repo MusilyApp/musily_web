@@ -7,10 +7,7 @@ export const useTheme = () => {
   });
 
   const applyTheme = () => {
-    document.documentElement.classList.toggle(
-      'theme-dark',
-      themeMode.value === 'dark',
-    );
+    document.documentElement.setAttribute('data-theme', themeMode.value);
   };
 
   const toggleTheme = () => {

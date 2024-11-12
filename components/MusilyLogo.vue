@@ -1,0 +1,126 @@
+<script setup lang="ts">
+import type { Color } from '~/types/styles';
+
+withDefaults(
+  defineProps<{
+    width?: string;
+    height?: string;
+    color?: Color;
+  }>(),
+  {
+    color: 'primary-color-fill',
+    width: '50px',
+    height: '50px',
+  },
+);
+
+const mainTransform = computed(() => {
+  return 'matrix(2.2103642,0,0,2.2103642,-178.83088,-168.01899)';
+});
+
+const pathTransform = computed(() => {
+  return 'matrix(4.1879507,0,0,4.1879507,-1474.247,-171.14083)';
+});
+
+const g1Transform = computed(() => {
+  return 'matrix(-2.4086062,2.4086062,2.4086062,2.4086062,799.05868,-908.82819)';
+});
+
+const g2Transform = computed(() => {
+  return 'matrix(2.4086062,2.4086062,-2.4086062,2.4086062,-514.67338,-908.85235)';
+});
+</script>
+
+<template>
+  <svg
+    :width="width"
+    :height="height"
+    viewBox="0 0 270.93333 270.93333"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:svg="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+  >
+    <g id="layer1">
+      <g
+        id="g1"
+        :transform="mainTransform"
+        :class="color"
+        :style="{
+          fillOpacity: 1,
+          strokeWidth: 0.670686,
+          strokeDasharray: 'none',
+        }"
+      >
+        <path
+          id="path10"
+          :class="color"
+          :style="{
+            fillOpacity: 1,
+            strokeWidth: 0.160147,
+            strokeDasharray: 'none',
+          }"
+          d="m 385.64632,64.295236 c 1.40264,-0.0029 3.34142,1.287942 4.04743,3.731006 0.52767,1.825928 0.36672,4.295465 -1.22131,7.349485 -0.95112,1.829138 -2.13476,3.416184 -2.88713,4.347455 -0.69524,-1.07762 -1.28088,-2.454208 -2.03749,-4.094438 -0.29872,-0.647564 -2.37813,-5.286075 -1.82906,-7.76585 0.35302,-1.59432 1.31745,-3.562201 3.92756,-3.567658 z"
+          :transform="pathTransform"
+        />
+        <g
+          id="g10-0"
+          :transform="g1Transform"
+          :class="color"
+          :style="{
+            fillOpacity: 1,
+            strokeWidth: 0.196897,
+            strokeDasharray: 'none',
+          }"
+        >
+          <path
+            id="path9-2"
+            d="m 356.36106,68.357885 c 0.7737,-1.636422 2.16101,-2.778077 4.30219,-2.782553 3.01342,-0.0063 8.03947,4.844435 3.47466,13.62322 -1.16938,2.248885 -2.62465,4.200123 -3.54967,5.3451 -0.31942,-2.029155 -2.36407,-5.318959 -3.73743,-8.25649 -1.33988,-2.543341 -1.65956,-5.261498 -0.48975,-7.929277 z"
+          />
+          <path
+            id="path10-3"
+            d="m 356.36106,68.357885 c 0.7737,-1.636422 2.16101,-2.778077 4.30219,-2.782553 3.01342,-0.0063 8.03947,4.844435 3.47466,13.62322 -1.16938,2.248885 -2.62465,4.200123 -3.54967,5.3451 -0.31942,-2.029155 -2.36407,-5.318959 -3.73743,-8.25649 -1.33988,-2.543341 -1.65956,-5.261498 -0.48975,-7.929277 z"
+          />
+        </g>
+        <g
+          id="g10-2"
+          :transform="g2Transform"
+          :class="color"
+          :style="{
+            fillOpacity: 1,
+            strokeWidth: 0.196897,
+            strokeDasharray: 'none',
+          }"
+        >
+          <path
+            id="path9-28"
+            d="m 356.36106,68.357885 c 0.7737,-1.636422 2.16101,-2.778077 4.30219,-2.782553 3.01342,-0.0063 8.03947,4.844435 3.47466,13.62322 -1.16938,2.248885 -2.62465,4.200123 -3.54967,5.3451 -0.31942,-2.029155 -2.36407,-5.318959 -3.73743,-8.25649 -1.33988,-2.543341 -1.65956,-5.261498 -0.48975,-7.929277 z"
+          />
+        </g>
+        <path
+          id="path12-3"
+          :class="color"
+          :style="{
+            fillOpacity: 1,
+            stroke: 'none',
+            strokeWidth: 0.670686,
+            strokeDasharray: 'none',
+            strokeOpacity: 1,
+          }"
+          d="m 104.57359,169.7411 c 21.49113,-5.72538 45.43826,-5.80657 67.33108,-2.76881 3.2103,0.53508 13.53472,2.62545 12.6302,7.26078 -1.23796,4.62171 -10.08538,0.80733 -12.99545,-0.0135 -36.41781,-9.6677 -77.606488,-1.28685 -66.96583,-4.47843 z"
+        />
+      </g>
+    </g>
+  </svg>
+</template>
+
+<style scoped lang="scss">
+@use '@/assets/scss/variables.scss' as *;
+
+svg {
+  display: block;
+}
+
+.logo {
+  fill: $primary-color;
+}
+</style>

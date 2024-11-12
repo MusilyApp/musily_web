@@ -1,0 +1,28 @@
+@use '@/assets/scss/variables.scss' as *;
+
+$colors: (
+  primary-color: $primary-color,
+  inverse-primary-color: $inverse-primary-color,
+  on-primary-color: $on-primary-color,
+  disabled-color: $disabled-color,
+  on-surface-color: $on-surface-color,
+  text-color: $text-color,
+);
+
+@each $name, $color in $colors {
+  .#{$name}-bg {
+    background-color: $color;
+  }
+  .#{$name}-text {
+    color: $color;
+  }
+  .#{$name}-border {
+    border-color: $color;
+  }
+  .#{$name}-fill {
+    fill: $color;
+  }
+  .#{$name}-border-top {
+    border-top-color: $color !important;
+  }
+}

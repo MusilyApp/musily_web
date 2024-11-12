@@ -1,0 +1,141 @@
+@use 'sass:map';
+
+$font-name: 'Roboto', 'Arial', sans-serif;
+
+$font-weights: (
+  100: 100,
+  200: 200,
+  300: 300,
+  400: 400,
+  500: 500,
+  600: 600,
+  700: 700,
+  800: 800,
+  900: 900,
+);
+
+@each $weight, $value in $font-weights {
+  .fw-#{$weight} {
+    font-weight: $value;
+  }
+}
+
+$font-sizes: (
+  display-large: 57pt,
+  display-medium: 45pt,
+  display-small: 36pt,
+  headline-large: 32pt,
+  headline-medium: 28pt,
+  headline-small: 24pt,
+  title-large: 22pt,
+  title-medium: 16pt,
+  title-small: 14pt,
+  body-large: 16pt,
+  body-medium: 14pt,
+  body-small: 12pt,
+  label-large: 14pt,
+  label-medium: 12pt,
+  label-small: 11pt,
+);
+
+$trackings: (
+  display-large: -0.25pt,
+  display-medium: 0,
+  display-small: 0,
+  headline-large: 0,
+  headline-medium: 0,
+  headline-small: 0,
+  title-large: 0,
+  title-medium: 0.15pt,
+  title-small: 0.1pt,
+  body-large: 0.5pt,
+  body-medium: 0.25pt,
+  body-small: 0.4pt,
+  label-large: 0.1pt,
+  label-medium: 0.5pt,
+  label-small: 0.5pt,
+);
+
+$line-heights: (
+  display-large: 64pt,
+  display-medium: 52pt,
+  display-small: 44pt,
+  headline-large: 40pt,
+  headline-medium: 36pt,
+  headline-small: 32pt,
+  title-large: 28pt,
+  title-medium: 24pt,
+  title-small: 20pt,
+  body-large: 24pt,
+  body-medium: 20pt,
+  body-small: 16pt,
+  label-large: 20pt,
+  label-medium: 16pt,
+  label-small: 16pt,
+);
+
+@mixin typography-style($type, $size, $weight: null) {
+  $font-size: map.get($font-sizes, '#{$type}-#{$size}');
+  $tracking: map.get($trackings, '#{$type}-#{$size}');
+  $line-height: map.get($line-heights, '#{$type}-#{$size}');
+
+  font-family: $font-name;
+  font-weight: if($weight, $weight, 400);
+  font-size: $font-size;
+  letter-spacing: $tracking;
+  line-height: $line-height;
+}
+
+@each $type, $type-values in (display, headline, title, body, label) {
+  @each $size in (large, medium, small) {
+    .#{$type}-#{$size} {
+      @include typography-style($type, $size);
+    }
+    .#{$type}-#{$size}-medium {
+      @include typography-style($type, $size, 500);
+    }
+    .#{$type}-#{$size}-bold {
+      @include typography-style($type, $size, 700);
+    }
+    .#{$type}-#{$size}-light {
+      @include typography-style($type, $size, 100);
+    }
+    @each $weight, $value in $font-weights {
+      .#{$type}-#{$size}-#{$weight} {
+        @include typography-style($type, $size, $value);
+      }
+    }
+  }
+}
+
+.text-overflow-ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+$text-aligns: (left, center, right, justify);
+
+@each $align in $text-aligns {
+  .text-align-#{$align} {
+    text-align: $align;
+  }
+}
+
+$breakpoints: (
+  xs: 1px,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+);
+
+@each $breakpoint in map.keys($breakpoints) {
+  @each $align in $text-aligns {
+    .text-align-#{$breakpoint}-#{$align} {
+      @media (min-width: map.get($breakpoints, $breakpoint)) {
+        text-align: $align !important;
+      }
+    }
+  }
+}

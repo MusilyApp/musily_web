@@ -1,0 +1,193 @@
+@use 'sass:map';
+@use 'sass:meta';
+
+$breakpoints: (
+  xs: 1px,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+);
+
+$spacings: (
+  0,
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12,
+  13,
+  14,
+  15,
+  16,
+  17,
+  18,
+  19,
+  20,
+  21,
+  22,
+  23,
+  24
+);
+
+$directions: (
+  a: (
+    top,
+    right,
+    bottom,
+    left,
+  ),
+  t: top,
+  b: bottom,
+  r: right,
+  l: left,
+  x: (
+    left,
+    right,
+  ),
+  y: (
+    top,
+    bottom,
+  ),
+);
+
+// Generate margin and padding classes
+@each $spacer in $spacings {
+  @each $dir, $prop in $directions {
+    .m#{$dir}-#{$spacer} {
+      @if meta.type-of($prop) == 'list' {
+        @each $side in $prop {
+          margin-#{$side}: #{$spacer * 4}px;
+        }
+      } @else {
+        margin-#{$prop}: #{$spacer * 4}px;
+      }
+    }
+    .p#{$dir}-#{$spacer} {
+      @if meta.type-of($prop) == 'list' {
+        @each $side in $prop {
+          padding-#{$side}: #{$spacer * 4}px;
+        }
+      } @else {
+        padding-#{$prop}: #{$spacer * 4}px;
+      }
+    }
+  }
+}
+
+// Responsive classes for margins and paddings
+@each $breakpoint in map.keys($breakpoints) {
+  @media (min-width: map.get($breakpoints, $breakpoint)) {
+    @each $spacer in $spacings {
+      @each $dir, $prop in $directions {
+        .m#{$dir}-#{$breakpoint}-#{$spacer} {
+          @if meta.type-of($prop) == 'list' {
+            @each $side in $prop {
+              margin-#{$side}: #{$spacer * 4}px;
+            }
+          } @else {
+            margin-#{$prop}: #{$spacer * 4}px;
+          }
+        }
+        .p#{$dir}-#{$breakpoint}-#{$spacer} {
+          @if meta.type-of($prop) == 'list' {
+            @each $side in $prop {
+              padding-#{$side}: #{$spacer * 4}px;
+            }
+          } @else {
+            padding-#{$prop}: #{$spacer * 4}px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Display utilities
+$displays: (flex, block, inline-block, inline, grid, inline-flex, none);
+
+@each $breakpoint in map.keys($breakpoints) {
+  @each $display in $displays {
+    .d-#{$breakpoint}-#{$display} {
+      @media (min-width: map.get($breakpoints, $breakpoint)) {
+        display: #{$display} !important;
+      }
+    }
+  }
+}
+
+// Flex-direction utilities for flex-row and flex-col
+@each $breakpoint in map.keys($breakpoints) {
+  @media (min-width: map.get($breakpoints, $breakpoint)) {
+    .flex-#{$breakpoint}-row {
+      flex-direction: row !important;
+    }
+    .flex-#{$breakpoint}-col {
+      flex-direction: column !important;
+    }
+  }
+}
+
+@each $display in $displays {
+  .d-#{$display} {
+    display: #{$display};
+  }
+  .flex-row {
+    flex-direction: row;
+  }
+  .flex-col {
+    flex-direction: column;
+  }
+}
+
+// Justify-content utilities
+$justify-options: (
+  start: start,
+  end: end,
+  center: center,
+  between: space-between,
+  around: space-around,
+  evenly: space-evenly,
+);
+
+@each $breakpoint in map.keys($breakpoints) {
+  @each $justify, $value in $justify-options {
+    .justify-#{$breakpoint}-#{$justify} {
+      @media (min-width: map.get($breakpoints, $breakpoint)) {
+        justify-content: #{$value} !important;
+      }
+    }
+  }
+}
+
+@each $justify, $value in $justify-options {
+  .justify-#{$justify} {
+    justify-content: #{$value};
+  }
+}
+
+// Align-items utilities
+$align-options: (start, end, center, baseline, stretch);
+
+@each $breakpoint in map.keys($breakpoints) {
+  @each $align in $align-options {
+    .align-#{$breakpoint}-#{$align} {
+      @media (min-width: map.get($breakpoints, $breakpoint)) {
+        align-items: #{$align};
+      }
+    }
+  }
+}
+
+@each $align in $align-options {
+  .align-#{$align} {
+    align-items: #{$align};
+  }
+}

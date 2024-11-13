@@ -1,16 +1,3 @@
-<template>
-  <button
-    :class="['ly-filled-button']"
-    :disabled="disabled"
-    @click="onClick"
-    @focus="handleFocus"
-    @blur="handleBlur"
-  >
-    <LyCircularProgress v-if="loading" color="on-primary-color-border-top" />
-    <slot v-else />
-  </button>
-</template>
-
 <script setup lang="ts">
 import { ref } from 'vue';
 
@@ -44,6 +31,19 @@ function handleBlur() {
   isFocused.value = false;
 }
 </script>
+
+<template>
+  <button
+    :class="['ly-filled-button']"
+    :disabled="disabled"
+    @click="onClick"
+    @focus="handleFocus"
+    @blur="handleBlur"
+  >
+    <LyCircularProgress v-if="loading" color="on-primary-color-border-top" />
+    <slot v-else />
+  </button>
+</template>
 
 <style scoped lang="scss">
 @use '@/assets/scss/ui/buttons/LyFilledButton.scss';

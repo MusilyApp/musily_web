@@ -2,6 +2,8 @@
 definePageMeta({
   layout: 'default',
 });
+
+const { openUrl } = useOpenUrl();
 </script>
 
 <template>
@@ -28,8 +30,18 @@ definePageMeta({
           class="d-flex justify-center mt-3 flex-col flex-md-row"
           style="gap: 4px"
         >
-          <LyFilledButton>Download</LyFilledButton>
-          <LyFilledButton>Download via Telegram</LyFilledButton>
+          <LyFilledButton
+            class="width-md-45"
+            @click="openUrl('https://t.me/MusilyApp')"
+          >
+            Telegram Channel
+          </LyFilledButton>
+          <LyFilledButton
+            class="width-md-45"
+            @click="openUrl('https://github.com/MusilyApp')"
+          >
+            Github
+          </LyFilledButton>
         </div>
       </div>
     </div>

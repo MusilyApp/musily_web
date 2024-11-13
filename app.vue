@@ -9,8 +9,8 @@ useSeoMeta({
   ogType: 'website',
   ogLocale: 'en_US',
   ogImage: '/icons/og_img.png',
-  ogImageWidth: '1024',
-  ogImageHeight: '1024',
+  ogImageWidth: '1200',
+  ogImageHeight: '630',
   ogImageType: 'image/png',
   ogSiteName: 'Musily',
 });

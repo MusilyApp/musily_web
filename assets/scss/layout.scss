@@ -191,3 +191,49 @@ $align-options: (start, end, center, baseline, stretch);
     align-items: #{$align};
   }
 }
+
+@each $breakpoint in map.keys($breakpoints) {
+  @for $index from 1 through 150 {
+    @media (min-width: map.get($breakpoints, $breakpoint)) {
+      .width-#{$breakpoint}-#{$index} {
+        width: #{$index * 4}px;
+      }
+      .height-#{$breakpoint}-#{$index} {
+        height: #{$index * 4}px;
+      }
+      .min-width-#{$breakpoint}-#{$index} {
+        min-width: #{$index * 4}px;
+      }
+      .min-height-#{$breakpoint}-#{$index} {
+        min-height: #{$index * 4}px;
+      }
+      .max-width-#{$breakpoint}-#{$index} {
+        max-width: #{$index * 4}px;
+      }
+      .max-height-#{$breakpoint}-#{$index} {
+        max-height: #{$index * 4}px;
+      }
+    }
+  }
+}
+
+@for $index from 1 through 150 {
+  .width-#{$index} {
+    width: #{$index * 4}px;
+  }
+  .height-#{$index} {
+    height: #{$index * 4}px;
+  }
+  .min-width-#{$index} {
+    min-width: #{$index * 4}px;
+  }
+  .min-height-#{$index} {
+    min-height: #{$index * 4}px;
+  }
+  .max-width-#{$index} {
+    max-width: #{$index * 4}px;
+  }
+  .max-height-#{$index} {
+    max-height: #{$index * 4}px;
+  }
+}

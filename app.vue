@@ -7,6 +7,7 @@ useSeoMeta({
   ogImageWidth: '1024',
   ogImageHeight: '1024',
   ogImageType: 'image/png',
+  ogSiteName: 'Musily',
 });
 </script>
 

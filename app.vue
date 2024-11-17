@@ -13,6 +13,13 @@ useSeoMeta({
   ogImageHeight: '630',
   ogImageType: 'image/png',
   ogSiteName: 'Musily',
+  twitterCard: 'summary_large_image',
+  twitterTitle: 'Musily: Enjoy your music with a great music app.',
+  twitterDescription: 'Enjoy your music with a great music app.',
+  twitterImage: '/icons/og_img.png',
+  charset: 'utf-8',
+  viewport: 'width=device-width, initial-scale=1',
+  robots: 'index, follow',
 });
 </script>
 

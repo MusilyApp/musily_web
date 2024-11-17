@@ -1,3 +1,7 @@
+body {
+  display: none;
+}
+
 [data-theme='dark'] {
   --background-color: #151318;
   --text-color: #fef7ff;
@@ -7,6 +11,10 @@
   --on-primary-color: #504070;
   --disabled-color: #626262;
   --on-surface-color: #e7e0e8;
+
+  body {
+    display: block;
+  }
 }
 
 [data-theme='light'] {
@@ -18,6 +26,10 @@
   --on-primary-color: #e0e0e0;
   --disabled-color: #9d999e;
   --on-surface-color: #1d1b20;
+
+  body {
+    display: block;
+  }
 }
 
 $background-color: var(--background-color);

@@ -3,7 +3,7 @@ export const useTheme = () => {
     if (typeof localStorage === 'undefined') {
       return 'dark';
     }
-    return localStorage.getItem('theme') || 'light';
+    return localStorage.getItem('theme') || 'dark';
   });
 
   const applyTheme = () => {
@@ -11,7 +11,7 @@ export const useTheme = () => {
   };
 
   const toggleTheme = () => {
-    themeMode.value = themeMode.value === 'light' ? 'dark' : 'light';
+    themeMode.value = themeMode.value === 'light' ? 'dark' : 'dark';
     localStorage.setItem('theme', themeMode.value);
     applyTheme();
   };

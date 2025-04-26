@@ -1,5 +1,5 @@
 <template>
-  <div class="tab-view">
+  <div class="tab-view" style="max-width: calc(100vw - 20px);">
     <div class="tab-buttons">
       <div class="tab-buttons-inner">
         <button v-for="(tab, index) in tabs" :key="index" :class="{ active: index === activeTab }"

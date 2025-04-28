@@ -87,7 +87,7 @@ function extractPlatformUrls(assets: any[]) {
       windowsUrl.value = url;
     } else if (name.endsWith('.flatpak')) {
       linuxUrl.value = url;
-    } else if (name.includes('linux')) {
+    } else if (name.includes('linux') && !name) {
       linuxUrl.value = url;
     }
   });

@@ -85,9 +85,9 @@ function extractPlatformUrls(assets: any[]) {
       androidUrl.value = url;
     } else if (name.includes('win') || name.includes('windows')) {
       windowsUrl.value = url;
-    } else if (name.endsWith('.flatpak')) {
+    } else if (name.includes('musily-linux-installer')) {
       linuxUrl.value = url;
-    } else if (name.includes('linux') && !name) {
+    } else if (name.includes('linux') && !name.includes('musily-linux-installer')) {
       linuxUrl.value = url;
     }
   });

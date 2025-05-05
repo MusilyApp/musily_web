@@ -87,8 +87,6 @@ function extractPlatformUrls(assets: any[]) {
       windowsUrl.value = url;
     } else if (name.includes('musily-linux-installer')) {
       linuxUrl.value = url;
-    } else if (name.includes('linux') && !name.includes('musily-linux-installer')) {
-      linuxUrl.value = url;
     }
   });
 }
